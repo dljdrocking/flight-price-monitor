@@ -53,6 +53,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      # 每轮用新的 run_number 建缓存，通过 restore-keys 继承上一轮的数据库。
+      # 保留 flight_prices 历史走势 + alert_state 上次推送价，避免每轮重复推送。
+      - name: Restore price database cache
+        id: cache-prices
+        uses: actions/cache@v6
+        with:
+          path: data/prices.db
+          key: prices-${{ runner.os }}-${{ github.ref_name }}-${{ github.run_number }}
+          restore-keys: |
+            prices-${{ runner.os }}-${{ github.ref_name }}-
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
