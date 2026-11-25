@@ -28,9 +28,9 @@ on:
         required: true
         default: '2027-02-03,2027-02-04'
       return_dates:
-        description: '回程日期, 逗号分隔 (可选)'
+        description: '回程日期, 逗号分隔 (可选, 默认只监控去程单程)'
         required: false
-        default: '2027-02-13'
+        default: ''
       platforms:
         description: '平台: fliggy,tuniu,qunar,tongcheng,ctrip'
         required: false
@@ -64,7 +64,7 @@ jobs:
           python -m playwright install chromium --with-deps
 
       # scheduled 触发时 github.event.inputs 为空，全部使用下面 || 后的 fallback。
-      # 去程 2/3、2/4 两天；回程 2/13 一天。改日期时上面 inputs 和这里两处都要改。
+      # 默认只监控大连(DLC)→郑州(CGO) 去程 2027-02-03、2027-02-04 两天，不监控回程。
       - name: Build config from workflow_dispatch or defaults
         run: |
           python scripts/build_config.py \
@@ -73,7 +73,7 @@ jobs:
             --to-code "${{ github.event.inputs.to_code || 'CGO' }}" \
             --to-name "${{ github.event.inputs.to_name || '郑州' }}" \
             --dates "${{ github.event.inputs.depart_dates || '2027-02-03,2027-02-04' }}" \
-            --return-dates "${{ github.event.inputs.return_dates || '2027-02-13' }}" \
+            --return-dates "${{ github.event.inputs.return_dates || '' }}" \
             --platforms "${{ github.event.inputs.platforms || 'fliggy,tuniu,qunar,tongcheng' }}" \
             --threshold "${{ github.event.inputs.threshold || '770' }}" \
             --serverchan-key "${{ secrets.SERVERCHAN_KEY }}" \
