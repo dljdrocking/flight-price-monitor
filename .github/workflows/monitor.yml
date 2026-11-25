@@ -2,34 +2,35 @@ name: Flight Price Monitor
 
 on:
   schedule:
-    # 每天 01:00 / 07:00 / 13:00 / 19:00 UTC（北京时间 09/15/21/03 点）
+    # UTC 时间。原版 1,7,13,19 = 北京时间 09:00 / 15:00 / 21:00 / 03:00（每天4次）
+    # 注意：scheduled 触发时没有 inputs，全部走下面 build_config 里的 fallback 默认值
     - cron: '0 1,7,13,19 * * *'
   workflow_dispatch:
     inputs:
       from_code:
-        description: '出发地三字码 (如 LZO)'
+        description: '出发地三字码 (如 DLC)'
         required: true
-        default: 'LZO'
+        default: 'DLC'
       from_name:
-        description: '出发地名称 (如 泸州)'
+        description: '出发地名称 (如 大连)'
         required: true
-        default: '泸州'
+        default: '大连'
       to_code:
-        description: '目的地三字码 (如 BJS)'
+        description: '目的地三字码 (如 CGO)'
         required: true
-        default: 'BJS'
+        default: 'CGO'
       to_name:
-        description: '目的地名称 (如 北京)'
+        description: '目的地名称 (如 郑州)'
         required: true
-        default: '北京'
+        default: '郑州'
       depart_dates:
-        description: '去程日期, 逗号分隔 (如 2026-09-30,2026-10-01)'
+        description: '去程日期, 逗号分隔'
         required: true
-        default: '2026-09-30,2026-10-01,2026-10-02'
+        default: '2027-02-03,2027-02-04'
       return_dates:
         description: '回程日期, 逗号分隔 (可选)'
         required: false
-        default: '2026-10-06'
+        default: '2027-02-13'
       platforms:
         description: '平台: fliggy,tuniu,qunar,tongcheng,ctrip'
         required: false
@@ -37,7 +38,7 @@ on:
       threshold:
         description: '低价提醒阈值（元）'
         required: false
-        default: '0'
+        default: '770'
 
 permissions:
   contents: write
@@ -62,17 +63,19 @@ jobs:
           pip install -r requirements.txt
           python -m playwright install chromium --with-deps
 
+      # scheduled 触发时 github.event.inputs 为空，全部使用下面 || 后的 fallback。
+      # 去程 2/3、2/4 两天；回程 2/13 一天。改日期时上面 inputs 和这里两处都要改。
       - name: Build config from workflow_dispatch or defaults
         run: |
           python scripts/build_config.py \
-            --from-code "${{ github.event.inputs.from_code || 'LZO' }}" \
-            --from-name "${{ github.event.inputs.from_name || '泸州' }}" \
-            --to-code "${{ github.event.inputs.to_code || 'BJS' }}" \
-            --to-name "${{ github.event.inputs.to_name || '北京' }}" \
-            --dates "${{ github.event.inputs.depart_dates || '2026-09-30,2026-10-01,2026-10-02' }}" \
-            --return-dates "${{ github.event.inputs.return_dates || '2026-10-06' }}" \
+            --from-code "${{ github.event.inputs.from_code || 'DLC' }}" \
+            --from-name "${{ github.event.inputs.from_name || '大连' }}" \
+            --to-code "${{ github.event.inputs.to_code || 'CGO' }}" \
+            --to-name "${{ github.event.inputs.to_name || '郑州' }}" \
+            --dates "${{ github.event.inputs.depart_dates || '2027-02-03,2027-02-04' }}" \
+            --return-dates "${{ github.event.inputs.return_dates || '2027-02-13' }}" \
             --platforms "${{ github.event.inputs.platforms || 'fliggy,tuniu,qunar,tongcheng' }}" \
-            --threshold "${{ github.event.inputs.threshold || '0' }}" \
+            --threshold "${{ github.event.inputs.threshold || '770' }}" \
             --serverchan-key "${{ secrets.SERVERCHAN_KEY }}" \
             --output config.yaml
 
