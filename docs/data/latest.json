@@ -7,23 +7,20 @@
         "name": "DLC"
       },
       "to": {
-        "code": "DLC",
-        "name": "DLC"
+        "code": "CGO",
+        "name": "CGO"
       },
       "depart_dates": [
         "2027-02-03",
         "2027-02-04"
       ],
-      "return_dates": [
-        "2027-02-03",
-        "2027-02-04"
-      ],
+      "return_dates": [],
       "platforms": [
         "qunar",
         "tongcheng"
       ],
       "threshold": 0,
-      "query_time": "2026-11-25 08:58:41"
+      "query_time": "2026-11-25 10:06:51"
     },
     "results": [
       {
@@ -36,7 +33,7 @@
         "flight_no": "",
         "depart_time": "",
         "arrive_time": "",
-        "fetched_at": "2026-11-25 08:53:38"
+        "fetched_at": "2026-11-25 10:06:00"
       },
       {
         "platform": "tongcheng",
@@ -48,7 +45,7 @@
         "flight_no": "",
         "depart_time": "",
         "arrive_time": "",
-        "fetched_at": "2026-11-25 08:54:06"
+        "fetched_at": "2026-11-25 10:06:24"
       },
       {
         "platform": "tongcheng",
@@ -60,48 +57,10 @@
         "flight_no": "",
         "depart_time": "",
         "arrive_time": "",
-        "fetched_at": "2026-11-25 08:54:34"
-      },
-      {
-        "platform": "qunar",
-        "from": "CGO",
-        "to": "DLC",
-        "date": "2027-02-13",
-        "price": 928.0,
-        "airline": "",
-        "flight_no": "",
-        "depart_time": "",
-        "arrive_time": "",
-        "fetched_at": "2026-11-25 08:58:14"
-      },
-      {
-        "platform": "tongcheng",
-        "from": "CGO",
-        "to": "DLC",
-        "date": "2027-02-13",
-        "price": 930.0,
-        "airline": "",
-        "flight_no": "",
-        "depart_time": "",
-        "arrive_time": "",
-        "fetched_at": "2026-11-25 08:58:41"
+        "fetched_at": "2026-11-25 10:06:51"
       }
     ],
     "summary": [
-      {
-        "from": "CGO",
-        "to": "DLC",
-        "date": "2027-02-13",
-        "per_platform": {
-          "qunar": 928.0,
-          "tongcheng": 930.0
-        },
-        "min_price": 928.0,
-        "best_platform": "qunar",
-        "best_flight": "",
-        "best_depart_time": "",
-        "best_arrive_time": ""
-      },
       {
         "from": "DLC",
         "to": "CGO",
@@ -134,13 +93,13 @@
       "2027-02-04": {
         "qunar": [
           {
-            "t": "2026-11-25 08:53:38",
+            "t": "2026-11-25 10:06:00",
             "v": 790.0
           }
         ],
         "tongcheng": [
           {
-            "t": "2026-11-25 08:54:34",
+            "t": "2026-11-25 10:06:51",
             "v": 790.0
           }
         ]
@@ -148,26 +107,12 @@
       "2027-02-03": {
         "tongcheng": [
           {
-            "t": "2026-11-25 08:54:06",
+            "t": "2026-11-25 10:06:24",
             "v": 680.0
-          }
-        ]
-      },
-      "2027-02-13": {
-        "qunar": [
-          {
-            "t": "2026-11-25 08:58:14",
-            "v": 928.0
-          }
-        ],
-        "tongcheng": [
-          {
-            "t": "2026-11-25 08:58:41",
-            "v": 930.0
           }
         ]
       }
     },
-    "generated_at": "2026-11-25T08:58:54.317100Z"
+    "generated_at": "2026-11-25T10:07:03.433585Z"
   }
 }
