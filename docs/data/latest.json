@@ -20,7 +20,7 @@
         "tongcheng"
       ],
       "threshold": 0,
-      "query_time": "2026-11-25 22:10:53"
+      "query_time": "2026-11-26 09:08:24"
     },
     "results": [
       {
@@ -33,19 +33,19 @@
         "flight_no": "",
         "depart_time": "",
         "arrive_time": "",
-        "fetched_at": "2026-11-25 22:10:08"
+        "fetched_at": "2026-11-26 09:07:39"
       },
       {
         "platform": "tongcheng",
         "from": "DLC",
         "to": "CGO",
         "date": "2027-02-03",
-        "price": 680.0,
+        "price": 650.0,
         "airline": "",
         "flight_no": "",
         "depart_time": "",
         "arrive_time": "",
-        "fetched_at": "2026-11-25 22:10:31"
+        "fetched_at": "2026-11-26 09:07:58"
       },
       {
         "platform": "tongcheng",
@@ -57,7 +57,7 @@
         "flight_no": "",
         "depart_time": "",
         "arrive_time": "",
-        "fetched_at": "2026-11-25 22:10:53"
+        "fetched_at": "2026-11-26 09:08:24"
       }
     ],
     "summary": [
@@ -66,9 +66,9 @@
         "to": "CGO",
         "date": "2027-02-03",
         "per_platform": {
-          "tongcheng": 680.0
+          "tongcheng": 650.0
         },
-        "min_price": 680.0,
+        "min_price": 650.0,
         "best_platform": "tongcheng",
         "best_flight": "",
         "best_depart_time": "",
@@ -99,6 +99,10 @@
           {
             "t": "2026-11-25 22:10:08",
             "v": 790.0
+          },
+          {
+            "t": "2026-11-26 09:07:39",
+            "v": 790.0
           }
         ],
         "tongcheng": [
@@ -108,6 +112,10 @@
           },
           {
             "t": "2026-11-25 22:10:53",
+            "v": 790.0
+          },
+          {
+            "t": "2026-11-26 09:08:24",
             "v": 790.0
           }
         ]
@@ -121,10 +129,14 @@
           {
             "t": "2026-11-25 22:10:31",
             "v": 680.0
+          },
+          {
+            "t": "2026-11-26 09:07:58",
+            "v": 650.0
           }
         ]
       }
     },
-    "generated_at": "2026-11-25T22:11:07.181096Z"
+    "generated_at": "2026-11-26T09:08:32.604147Z"
   }
 }
